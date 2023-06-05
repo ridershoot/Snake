@@ -19,16 +19,15 @@ jobs:
       - name: Checkout code
         #使用checkout@v2这个action获取源码
         uses: actions/checkout@v3
-      - name: Install PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7
       - name: Setup node
         uses: actions/setup-node@v3
         #指定某个action 可能需要输入的参数
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+      - name: Install PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
       - name: Cache node_modules
         uses: actions/cache@v3
         id: cache-node-modules
