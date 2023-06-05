@@ -17,7 +17,7 @@ jobs:
         #使用checkout@v2这个action获取源码
         uses: actions/checkout@v3
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         #指定某个action 可能需要输入的参数
         with:
           node-version: '16'
