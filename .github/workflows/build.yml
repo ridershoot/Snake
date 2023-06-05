@@ -17,14 +17,18 @@ jobs:
         #使用checkout@v2这个action获取源码
         uses: actions/checkout@v3
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         #指定某个action 可能需要输入的参数
         with:
-          node-version: '16'
+          node-version: '18'
+      - name: Install PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
       - name: Build project
-        run: npm run build
+        run: pnpm build
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
