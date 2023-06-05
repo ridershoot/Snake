@@ -24,7 +24,7 @@ jobs:
         #指定某个action 可能需要输入的参数
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+      #          cache: 'pnpm'
       - name: Install PNPM
         uses: pnpm/action-setup@v2
         with:
