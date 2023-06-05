@@ -1,0 +1,76 @@
+@import "utils";
+@import "property";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  @include w-full;
+  @include h-full;
+}
+
+#app {
+  @include w-full;
+  @include h-full;
+  @include relative;
+}
+
+
+.snakeGame {
+  width: $container-width;
+  height: $container-height;
+  border: $container-border-width solid #202123;
+  border-radius: $container-border-radius;
+  background-color: $container-bg-color;
+  @include absolute;
+  @include absolute-center;
+  @include overflow-hidden;
+  //@include box-border;
+
+  .snakeSite {
+    @include w-full;
+    @include box-border;
+
+    .snakePlayground {
+      width: $snakePlayground-size;
+      height: $snakePlayground-size;
+      border: 2px solid black;
+      @include mx-auto;
+      margin-top: 25px;
+      margin-bottom: 60px;
+      @include relative;
+    }
+
+    .snake {
+      & > div {
+        width: $snake-size;
+        height: $snake-size;
+        @include box-border;
+        background-color: black;
+        border: 1px solid $container-bg-color;
+        @include absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    .food {
+      width: $food-size;
+      height: $food-size;
+      background-color: transparent;
+      @include absolute;
+      top: 150px;
+      left: 60px;
+      border: 1px solid black;
+      @include box-border;
+    }
+  }
+
+  .scorePanel {
+    @include w-full;
+    @include box-border;
+    font: $scorePanel-font;
+    padding: 0 37.5px;
+    @include flex;
+    @include justify-between;
+  }
+}

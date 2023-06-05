@@ -1,0 +1,55 @@
+@mixin flex {
+  display: flex;
+}
+
+@mixin justify-center {
+  justify-content: center;
+}
+
+@mixin justify-between {
+  justify-content: space-between;
+}
+
+@mixin items-center {
+  align-items: center;
+}
+
+@mixin relative {
+  position: relative;
+}
+
+@mixin absolute {
+  position: absolute;
+}
+
+@mixin absolute-center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin box-border {
+  box-sizing: border-box;
+}
+
+@mixin w-full {
+  width: 100%;
+}
+
+@mixin h-full {
+  height: 100%;
+}
+
+@mixin mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin text-center {
+  text-align: center;
+}
+
+@mixin overflow-hidden {
+  overflow: hidden;
+}
+
