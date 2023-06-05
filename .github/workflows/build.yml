@@ -34,7 +34,7 @@ jobs:
         id: cache-node-modules
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ matrix.node-version }}-nodeModules-${{ hashFiles('package-lock.json') }}-${{ hashFiles('package.json') }}
+          key: ${{ runner.os }}-${{ matrix.node-version }}-nodeModules-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('package.json') }}
           restore-keys: |
             ${{ runner.os }}-${{ matrix.node-version }}-nodeModules-
       - name: Install dependencies
