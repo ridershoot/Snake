@@ -11,6 +11,9 @@ jobs:
   # 一个job任务，任务名为build
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18 ]
     # 步骤合集
     steps:
       - name: Checkout code
@@ -20,12 +23,22 @@ jobs:
         uses: actions/setup-node@v3
         #指定某个action 可能需要输入的参数
         with:
-          node-version: '18'
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
       - name: Install PNPM
         uses: pnpm/action-setup@v2
         with:
           version: 7
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        id: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ matrix.node-version }}-nodeModules-${{ hashFiles('package-lock.json') }}-${{ hashFiles('package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.node-version }}-nodeModules-
       - name: Install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: pnpm install
       - name: Build project
         run: pnpm build
